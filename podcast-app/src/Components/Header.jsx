@@ -1,17 +1,40 @@
-import "./Header.css";
+import { Link } from "react-router-dom";
+import { Moon, Heart, User } from "lucide-react";
 
 function Header() {
   return (
     <header className="header">
+
       <div className="logo">
-        <i className="fa-solid fa-podcast"></i>
-        <h1>PodcastApp</h1>
+        <h2>🎙 PodcastHub</h2>
       </div>
 
+      <nav>
+
+        <Link to="/">Home</Link>
+
+        <Link to="/favourites">
+          Favourites
+        </Link>
+
+      </nav>
+
       <div className="header-icons">
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <i className="fa-solid fa-user"></i>
+
+        <button>
+          <Moon size={20}/>
+        </button>
+
+        <button>
+          <Heart size={20}/>
+        </button>
+
+        <button>
+          <User size={20}/>
+        </button>
+
       </div>
+
     </header>
   );
 }

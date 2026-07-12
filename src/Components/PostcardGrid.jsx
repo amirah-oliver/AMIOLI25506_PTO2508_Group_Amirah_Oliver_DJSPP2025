@@ -1,37 +1,16 @@
-
 import PodcastCard from "./PodcastCard";
 
-
-function PodcastGrid({podcasts,open}){
-
-
-return (
-
-<div className="grid">
-
-
-{
-podcasts.map(p=>
-
-<PodcastCard
-
-key={p.id}
-
-podcast={p}
-
-open={open}
-
-/>
-
-)
-
-}
-
-
-</div>
-
-)
-
+function PodcastGrid({ podcasts }) {
+  return (
+    <section className="podcast-grid">
+      {podcasts.map((podcast) => (
+        <PodcastCard
+          key={podcast.id}
+          podcast={podcast}
+        />
+      ))}
+    </section>
+  );
 }
 
 export default PodcastGrid;

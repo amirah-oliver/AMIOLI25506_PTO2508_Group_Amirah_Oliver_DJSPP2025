@@ -91,9 +91,39 @@ function Home() {
   return (
     <>
       <Header />
+<section className="hero">
 
+    <div className="hero-text">
+
+        <h1>
+            Discover Amazing Podcasts
+        </h1>
+
+        <p>
+            Browse thousands of podcasts from every genre.
+            Save your favourites and continue listening anytime.
+        </p>
+
+    </div>
+
+</section>
       <main className="container">
+<section className="recommended">
 
+    <h2>Recommended Shows</h2>
+
+    <div className="recommended-row">
+
+        {podcasts.slice(0,4).map((podcast)=>(
+            <PodcastCard
+                key={podcast.id}
+                podcast={podcast}
+            />
+        ))}
+
+    </div>
+
+</section>
         <div className="filters">
 
           <SearchBar

@@ -8,40 +8,38 @@ function PodcastCard({ podcast }) {
   });
 
   return (
-    <Link
-      to={`/show/${podcast.id}`}
-      className="podcast-link"
-    >
+    <Link to={`/show/${podcast.id}`} className="podcast-link">
       <article className="card">
 
-        <img
-          src={podcast.image}
-          alt={podcast.title}
-          className="card-image"
-        />
+        <div className="image-wrapper">
+          <img
+            src={podcast.image}
+            alt={podcast.title}
+            className="card-image"
+          />
+
+          <button className="fav-btn">♡</button>
+        </div>
 
         <div className="card-content">
 
           <h2>{podcast.title}</h2>
 
-          <p>{podcast.seasons} Seasons</p>
+          <p className="season-count">
+            {podcast.seasons} Seasons
+          </p>
 
           <div className="genre-tags">
             {genreNames.map((genre) => (
-              <span
-                className="tag"
-                key={genre}
-              >
+              <span key={genre} className="tag">
                 {genre}
               </span>
             ))}
           </div>
 
-          <p>
+          <p className="updated">
             Updated{" "}
-            {new Date(
-              podcast.updated
-            ).toLocaleDateString()}
+            {new Date(podcast.updated).toLocaleDateString()}
           </p>
 
         </div>

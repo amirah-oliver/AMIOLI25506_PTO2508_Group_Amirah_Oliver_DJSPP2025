@@ -1,55 +1,17 @@
+<div className="modal-content">
 
+    <img src={podcast.image} alt={podcast.title} />
 
-function Modal({podcast,close}){
+    <div className="modal-info">
+        <h1>{podcast.title}</h1>
 
+        <p>{podcast.description}</p>
 
-return (
+        <h3>Genres</h3>
 
-<div className="modal">
+        <p>{podcast.genres.join(", ")}</p>
 
-
-<button onClick={close}>
-X
-</button>
-
-
-<img src={podcast.image}/>
-
-
-<h1>
-{podcast.title}
-</h1>
-
-
-<p>
-
-{podcast.description}
-
-</p>
-
-
-<h3>
-
-Genres:
-
-</h3>
-
-
-<p>
-
-{
-podcast.genres.join(", ")
-
-}
-
-</p>
-
+        <button onClick={close}>Close</button>
+    </div>
 
 </div>
-
-)
-
-}
-
-
-export default Modal;

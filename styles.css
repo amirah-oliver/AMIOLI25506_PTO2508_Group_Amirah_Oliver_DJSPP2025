@@ -270,3 +270,79 @@ select {
     gap: 0.5rem;
   }
 }
+.podcast-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.image-wrapper{
+    position:relative;
+}
+
+.card-image{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.fav-btn{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+    font-size:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card-content h2{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.season-count{
+    color:#777;
+    margin-bottom:15px;
+}
+
+.genre-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.tag{
+    background:#f2f2f2;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+}
+
+.updated{
+    color:#888;
+    font-size:13px;
+}
