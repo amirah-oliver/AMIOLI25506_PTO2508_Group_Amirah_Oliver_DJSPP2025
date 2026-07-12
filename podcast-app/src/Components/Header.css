@@ -1,0 +1,30 @@
+.header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo h1 {
+  font-size: 32px;
+}
+
+.logo i {
+  font-size: 28px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
