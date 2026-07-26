@@ -4,7 +4,7 @@ A modern podcast streaming application built with **React**, **Vite**, and **Rea
 
 ## Live Demo
 
-**Application:** *[(Add your deployed Vercel link here)](https://amioli-25506-pto-2508-group-amirah-coral.vercel.app/)*
+**Application:** *[MY PROJECT](https://amioli-25506-pto-2508-group-amirah-coral.vercel.app/)*
 
 ---
 
