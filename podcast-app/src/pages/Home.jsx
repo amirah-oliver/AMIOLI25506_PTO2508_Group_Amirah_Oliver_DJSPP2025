@@ -1,166 +1,54 @@
-import { useEffect, useState } from "react";
+import {
+  SearchBar,
+  SortSelect,
+  GenreFilter,
+  PodcastGrid,
+  Pagination,
+  Loading,
+  Error,
+} from "../components";
+import Carousel from "../components/UI/Carousel";
+import styles from "./Home.module.css";
+import { PodcastContext } from "../context/PodcastContextStore";
+import { useContext } from "react";
 
-import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
-import GenreFilter from "../components/GenreFilter";
-import SortDropdown from "../components/SortDropdown";
-import PodcastCard from "../components/PodcastCard";
-import Loading from "../components/Loading";
-
-import { getPodcasts } from "../services/api";
-
-function Home() {
-  const [podcasts, setPodcasts] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-
-  const [loading, setLoading] = useState(true);
-
-  const [search, setSearch] = useState(
-    localStorage.getItem("search") || ""
-  );
-
-  const [genre, setGenre] = useState(
-    localStorage.getItem("genre") || "all"
-  );
-
-  const [sort, setSort] = useState(
-    localStorage.getItem("sort") || "updated"
-  );
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const data = await getPodcasts();
-
-        setPodcasts(data);
-        setFiltered(data);
-      } catch (error) {
-        console.error(error);
-      }
-
-      setLoading(false);
-    }
-
-    loadData();
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("search", search);
-    localStorage.setItem("genre", genre);
-    localStorage.setItem("sort", sort);
-
-    let shows = [...podcasts];
-
-    if (search) {
-      shows = shows.filter((show) =>
-        show.title
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      );
-    }
-
-    if (genre !== "all") {
-      shows = shows.filter((show) =>
-        show.genres.includes(Number(genre))
-      );
-    }
-
-    if (sort === "title") {
-      shows.sort((a, b) =>
-        a.title.localeCompare(b.title)
-      );
-    }
-
-    if (sort === "updated") {
-      shows.sort(
-        (a, b) =>
-          new Date(b.updated) -
-          new Date(a.updated)
-      );
-    }
-
-    if (sort === "seasons") {
-      shows.sort(
-        (a, b) => b.seasons - a.seasons
-      );
-    }
-
-    setFiltered(shows);
-  }, [search, genre, sort, podcasts]);
+/**
+ * Home page of the Podcast Explorer app.
+ *
+ * - Displays the main podcast browsing interface.
+ * - Includes search, genre filter, and sort controls.
+ * - Shows a loading indicator or error message based on fetch state.
+ * - Renders the podcast grid and pagination once data is loaded.
+ *
+ * Context:
+ * - Consumes `PodcastContext` to access podcast data, loading, and error states.
+ *
+ * @returns {JSX.Element} The home page content with filters, results, and feedback states.
+ */
+export default function Home() {
+  const { loading, error, genres, search } = useContext(PodcastContext);
+  const showCarousel = !search.trim();
 
   return (
-    <>
-      <Header />
-<section className="hero">
+    <main className={styles.main}>
+      <section className={styles.controls}>
+        <SearchBar />
+        <GenreFilter genres={genres} />
+        <SortSelect />
+      </section>
 
-    <div className="hero-text">
+      {loading && <Loading message="Loading podcasts..." />}
+      {error && (
+        <Error message={`Error occurred while fetching podcasts: ${error}`} />
+      )}
 
-        <h1>
-            Discover Amazing Podcasts
-        </h1>
-
-        <p>
-            Browse thousands of podcasts from every genre.
-            Save your favourites and continue listening anytime.
-        </p>
-
-    </div>
-
-</section>
-      <main className="container">
-<section className="recommended">
-
-    <h2>Recommended Shows</h2>
-
-    <div className="recommended-row">
-
-        {podcasts.slice(0,4).map((podcast)=>(
-            <PodcastCard
-                key={podcast.id}
-                podcast={podcast}
-            />
-        ))}
-
-    </div>
-
-</section>
-        <div className="filters">
-
-          <SearchBar
-            search={search}
-            setSearch={setSearch}
-          />
-
-          <GenreFilter
-            genre={genre}
-            setGenre={setGenre}
-          />
-
-          <SortDropdown
-            sort={sort}
-            setSort={setSort}
-          />
-
-        </div>
-
-        {loading ? (
-          <Loading />
-        ) : (
-          <div className="podcast-grid">
-
-            {filtered.map((podcast) => (
-              <PodcastCard
-                key={podcast.id}
-                podcast={podcast}
-              />
-            ))}
-
-          </div>
-        )}
-
-      </main>
-    </>
+      {!loading && !error && (
+        <>
+          {showCarousel && <Carousel />}
+          <PodcastGrid />
+          <Pagination />
+        </>
+      )}
+    </main>
   );
 }
-
-export default Home;
