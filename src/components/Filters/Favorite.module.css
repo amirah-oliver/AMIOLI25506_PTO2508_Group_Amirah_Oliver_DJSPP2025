@@ -1,0 +1,193 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-muted);
+}
+
+.icon {
+  color: #d4a017;
+}
+
+.count {
+  min-width: 1.4rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.star {
+  display: none;
+}
+
+
+.favoriteEpisodes {
+   background: var(--surface-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.favoriteGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.favoriteGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.25rem;
+}
+
+.favoriteGroupImage {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.favoriteGroupTitle {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.favoriteGroupCount {
+  margin: 0.2rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.favoriteEpisodeCard {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--fav-card);
+  box-shadow: var(--card-shadow);
+}
+
+.favoriteEpisodeImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.favoriteEpisodeInfo h3 {
+  margin: 0.25rem 0;
+}
+
+.favoriteEpisodeInfo p {
+  margin: 0.3rem 0;
+}
+
+.favoriteEpisodeDescription {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+}
+
+.favoriteEpisodeMeta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.addedDate {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.favoriteEpisodePlay {
+  margin-top: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--accent-primary);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.playing {
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+
+.favoriteEpisodeActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.favoriteEpisodeLink,
+.favoriteEpisodeRemove {
+  border: 1px solid var(--border-color);
+  background: var(--surface-muted);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.emptyFavorites {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .favoriteEpisodes {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .star {
+    display: inline;
+  }
+
+  .favoriteEpisodes {
+    margin: 0 5px;
+    width: auto;
+  }
+
+  .favoriteText {
+    display: none;
+  }
+  .favoriteEpisodeCard {
+    grid-template-columns: 1fr;
+  }
+
+  .favoriteEpisodeImage {
+    width: 100%;
+    height: 180px;
+  }
+
+  .favoriteEpisodeActions {
+    flex-direction: row;
+  }
+}
