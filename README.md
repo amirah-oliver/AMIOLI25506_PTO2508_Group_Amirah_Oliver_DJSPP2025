@@ -235,7 +235,7 @@ Since React Router uses client-side routing, a rewrite rule is included inside *
 
 # Contact
 
-* LinkedIn : 
+* LinkedIn :  linkedin.com/in/amirah-oliver-50360a317
 * Email: amirah.oliver16@gmail.com
 
 ---
